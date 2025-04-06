@@ -27,9 +27,11 @@ export default function Navbar() {
         </div>
         <ul className="hidden md:flex items-center space-x-8 text-sm font-medium">
           <li><Link href={"/"} className="hover:text-[var(--main-color)] transition duration-300">Home</Link></li>
-          <li><Link href={"/pages/services"} className="hover:text-[var(--main-color)] transition duration-300">Services</Link></li>
-          <li><Link href={"/pages/about"} className="hover:text-[var(--main-color)] transition duration-300">About</Link></li>
-          <li><Link href={"#"} className="hover:text-[var(--main-color)] transition duration-300">Contact</Link></li>
+          <li><Link href={"/pages/services"} className="hover:text-[var(--main-color)] transition duration-300">Our Services</Link></li>
+          <li><Link href={"/pages/about"} className="hover:text-[var(--main-color)] transition duration-300">About Us</Link></li>
+          <li><Link href={"#"} className="hover:text-[var(--main-color)] transition duration-300">Contact Us</Link></li>
+          <li><Link href={"#"} className="hover:text-[var(--main-color)] transition duration-300">Support</Link></li>
+
           {/* --primary-color */}
         </ul>
 
@@ -52,9 +54,10 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden mt-4 px-4 space-y-4 text-sm font-medium">
           <Link href="/" className="block hover:text-[var(--main-color)] transition duration-300">Home</Link>
-          <Link href="/pages/services" className="block hover:text-[var(--main-color)] transition duration-300">Services</Link>
-          <Link href="pages/about" className="block hover:text-[var(--main-color)] transition duration-300">About</Link>
-          <Link href="#" className="block hover:text-[var(--main-color)] transition duration-300">Contact</Link>
+          <Link href="/pages/services" className="block hover:text-[var(--main-color)] transition duration-300">Our Services</Link>
+          <Link href="pages/about" className="block hover:text-[var(--main-color)] transition duration-300">About Us</Link>
+          <Link href="#" className="block hover:text-[var(--main-color)] transition duration-300">Contact Us</Link>\
+          <Link href={"#"} className="hover:text-[var(--main-color)] transition duration-300">Support</Link>
           <button onClick={handleClick} className="cursor-pointer w-full bg-[var(--primary-color)] hover:bg-[var(--primary-color)] transition duration-300 text-white px-5 py-2 rounded-sm shadow font-bold">
             Get stranded
           </button>
