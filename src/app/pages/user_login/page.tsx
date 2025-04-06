@@ -2,234 +2,164 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import {
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Typography,
-  Paper,
-  Grid,
-  Box,
-} from '@mui/material';
-import { Toaster, toast } from 'react-hot-toast';
 import Navbar from '@/components/navbar/navbar';
+import { UserIcon, EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/outline';
+import { Toaster, toast } from 'react-hot-toast';
 import Footer from '@/components/footer/footer';
+import { registerUser } from '@/lib/services/userService';
+import Image from 'next/image';
+
 
 export default function RegisterPage() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    priceLevel: '',
-  });
+  const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleCheckboxChange = () => {
-    setAcceptedTerms(!acceptedTerms);
-  };
-
-  const validateEmail = (email: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!formData.username || !formData.email || !formData.password || !formData.priceLevel) {
-      toast.error('Please fill in all fields.');
-      return;
-    }
-
-    if (!validateEmail(formData.email)) {
-      toast.error('Invalid email address.');
-      return;
-    }
-
-    if (formData.password.length < 6) {
-      toast.error('Password must be at least 6 characters.');
-      return;
-    }
 
     if (!acceptedTerms) {
       toast.error('Please accept the terms and conditions.');
       return;
     }
 
+    setLoading(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/main/users/v2/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast.error(data.detail || 'Registration failed.');
-        return;
-      }
-
-      toast.success('Registration successful!');
-      setFormData({ username: '', email: '', password: '', priceLevel: '' });
+      await registerUser(formData);
+      toast.success('User registered successfully.');
+      setFormData({ username: '', email: '', password: '' });
       setAcceptedTerms(false);
       setTimeout(() => router.push('/'), 1500);
-    } catch (error) {
-      console.error('Error:', error);
-      toast.error('Server error. Please try again.');
+    } catch (error: any) {
+      toast.error(error.message || 'Server error. Please try again later.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      <Toaster position="top-right" />
-      <Navbar />
+    <div className="relative min-h-screen overflow-hidden">
+      <Toaster position="bottom-right" />
 
       {/* Background Video */}
-      <Box sx={{ position: 'fixed', top: 0, left: 0, zIndex: -1, width: '100%', height: '100%' }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-        >
-          <source
-            src="https://videos.pexels.com/video-files/5803093/5803093-uhd_2560_1440_25fps.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <Box
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            bgcolor: 'rgba(0,0,0,0.6)',
-          }}
-        />
-      </Box>
-
-      {/* Main Form Section */}
-      <Box
-        sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          px: 2,
-          py: 8,
-        }}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
-        <Paper elevation={8} sx={{ maxWidth: 1000, width: '100%', borderRadius: 3, overflow: 'hidden' }}>
-          <Grid container sx={{ height: { xs: 'auto', md: 500 } }}>
-            {/* Left image */}
-            <Grid item xs={12} md={6}>
-              <Box
-                sx={{
-                  height: { xs: 200, md: '100%' },
-                  backgroundImage:
-                    'url(https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg?auto=compress&cs=tinysrgb&w=1200)',
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                }}
+        <source
+          src="https://videos.pexels.com/video-files/5803093/5803093-uhd_2560_1440_25fps.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay */}
+      <div className="absolute inset-0 z-0 backdrop-blur-xs" />
+
+      {/* Main Content */}
+      <div className="relative z-10">
+        <Navbar />
+
+        <div className="flex items-center justify-center  px-4 py-10 mt-15">
+          <div className="bg-white backdrop-blur-md rounded shadow-2xl w-full max-w-4xl max-h-[90%] mx-auto flex flex-col md:flex-row overflow-hidden ">
+            {/* Left Side Image */}
+            <div className="md:w-1/2 hidden md:block rounded-2xl">
+              <img
+                src="https://images.pexels.com/photos/336232/pexels-photo-336232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Drone preview"
+                className="w-full h-full object-cover"
               />
-            </Grid>
+            </div>
 
-            {/* Right form */}
-            <Grid item xs={12} md={6} sx={{ p: 4, backgroundColor: 'white' }}>
-              <Typography variant="h5" gutterBottom fontWeight={600}>
+            {/* Right Side Form */}
+            <div className="w-full md:w-1/2 p-6 sm:p-10 space-y-6">
+              <h1 className="text-3xl font-extrabold text-center text-gray-800">
                 Create Your Account
-              </Typography>
+              </h1>
 
-              <form onSubmit={handleSubmit} noValidate>
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Username"
-                      name="username"
-                      fullWidth
-                      value={formData.username}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
+              <form onSubmit={handleSubmit} className="space-y-5 text-sm">
+                {/* Username */}
+                <div className="relative">
+                  <UserIcon className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
+                  <input
+                    type="text"
+                    name="username"
+                    value={formData.username}
+                    onChange={handleChange}
+                    placeholder="Username"
+                    required
+                    className="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 text-gray-800 bg-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
 
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Email"
-                      name="email"
-                      type="email"
-                      fullWidth
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
+                {/* Email */}
+                <div className="relative">
+                  <EnvelopeIcon className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Email"
+                    required
+                    className="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 text-gray-800 bg-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
 
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Password"
-                      name="password"
-                      type="password"
-                      fullWidth
-                      value={formData.password}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
+                {/* Password */}
+                <div className="relative">
+                  <LockClosedIcon className="w-5 h-5 absolute left-3 top-2.5 text-gray-400" />
+                  <input
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    placeholder="Password"
+                    required
+                    className="pl-10 w-full border border-gray-300 rounded-md py-2 px-3 text-gray-800 bg-white placeholder-gray-400 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
 
-                  <Grid item xs={12}>
-                    <TextField
-                      label="Price Level"
-                      name="priceLevel"
-                      fullWidth
-                      value={formData.priceLevel}
-                      onChange={handleChange}
-                      required
-                    />
-                  </Grid>
+                {/* Terms Checkbox */}
+                <div className="flex items-start">
+                  <input
+                    id="terms"
+                    type="checkbox"
+                    checked={acceptedTerms}
+                    onChange={() => setAcceptedTerms(!acceptedTerms)}
+                    className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                  />
+                  <label htmlFor="terms" className="ml-2 text-gray-700 text-sm">
+                    I agree to the <span className="text-blue-600 underline cursor-pointer">terms and conditions</span>
+                  </label>
+                </div>
 
-                  <Grid item xs={12}>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={acceptedTerms}
-                          onChange={handleCheckboxChange}
-                          color="primary"
-                        />
-                      }
-                      label="I accept the terms and conditions"
-                    />
-                  </Grid>
+                <button
+                  type="submit"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-md transition duration-300"
+                >
+                  Register
+                </button>
 
-                  <Grid item xs={12}>
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      fullWidth
-                      sx={{ py: 1.5 }}
-                    >
-                      Register
-                    </Button>
-                  </Grid>
-                </Grid>
+                <p className="text-xs text-center text-gray-500 mt-6">
+                  © 2025 FPV Drones. All rights reserved.
+                </p>
               </form>
-
-              <Typography variant="caption" display="block" align="center" mt={4} color="text.secondary">
-                © 2025 FPV Drones. All rights reserved.
-              </Typography>
-            </Grid>
-          </Grid>
-        </Paper>
-      </Box>
-
-      <Footer />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Footer />
     </>
   );
 }
