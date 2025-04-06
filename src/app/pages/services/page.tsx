@@ -4,17 +4,15 @@
 
 import React from "react";
 import Navbar from "@/components/navbar/navbar";
-import Footer from "@/components/footer/footer";
 
-
-export default function AboutPage() {
+export default function SerivesPage() {
   return (
     <>
       <Navbar/>
     <section className="min-h-screen bg-white text-gray-800 px-6 py-12">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-extrabold mb-6 text-[var(--main-color)]">
-          About FPV Drones
+          Service FPV Drones
         </h1>
         <p className="text-lg leading-relaxed mb-4">
           At <span className="font-semibold text-[var(--main-color)]">FPV Drones</span>, we specialize in high-performance drone technology for racing, cinematography, and exploration. Our mission is to elevate your aerial experience through precision engineering and innovation.
@@ -28,7 +26,7 @@ export default function AboutPage() {
         <div className="relative w-full h-[65vh] sm:h-[70vh] bg-white">
         <video
           className="w-full h-full object-cover mt-10 rounded-xs"
-          src="https://videos.pexels.com/video-files/5803093/5803093-uhd_2560_1440_25fps.mp4"
+          src="https://videos.pexels.com/video-files/5588061/5588061-hd_1920_1080_30fps.mp4"
           autoPlay
           loop
           muted
@@ -43,7 +41,6 @@ export default function AboutPage() {
       </div>
       </div>
     </section>
-    <Footer />
     </>
   );
 }
