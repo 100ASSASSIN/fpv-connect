@@ -6,7 +6,6 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Link from 'next/link';
 import Image from 'next/image';
 
-
 const navigation = [
   { name: 'Home', href: '/' },
   { name: 'Service', href: '/pages/service' },
@@ -26,13 +25,7 @@ export default function Navbar() {
           <div className="flex lg:flex-1">
             <Link href={"/"} className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              <Image
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="w-auto h-8"
-                width={40} // Set to appropriate size
-                height={40}
-              />
+              <div className="w-auto h-8 font-semibold text-gray-900 text-2xl/6">HMX<span className="text-[var(--main-color)]">HUB</span></div>
             </Link>
           </div>
           <div className="flex lg:hidden">
@@ -64,13 +57,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between">
               <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <Image
-                  alt=""
-                  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                  className="w-auto h-8"
-                  width={40} 
-                  height={40}
-                />
+                <div className="w-auto h-8 font-semibold text-gray-900 text-2xl/6">HMX<span className="text-[var(--main-color)]">HUB</span></div>
               </a>
               <button
                 type="button"
