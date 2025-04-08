@@ -1,14 +1,31 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Navbar from "@/components/navbar/navbar";
 import Footer from "@/components/footer/footer";
+import Spinner from "@/components/loader/loader";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function SelectionPage() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Hide spinner after full page load
+    const handleLoad = () => setLoading(false);
+
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
+
   return (
     <>
+      {loading && <Spinner />}
       <Head>
         <title>Selection Page</title>
       </Head>
