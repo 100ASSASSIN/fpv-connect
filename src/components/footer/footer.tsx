@@ -1,18 +1,22 @@
 "use client";
+import Image from 'next/image';
+
 
 export default function Footer() {
   return (
     <footer className="p-4 bg-white md:p-8 lg:p-10">
-      <div className="mx-auto max-w-screen-xl text-center">
+      <div className="max-w-screen-xl mx-auto text-center">
         <a
           href="#"
-          className="flex justify-center items-center text-2xl font-semibold text-gray-900"
+          className="flex items-center justify-center text-2xl font-semibold text-gray-900"
         >
-      <img
-                alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-                className="h-8 w-auto m-2"
-              />
+      <Image
+  alt="Tailwind Logo"
+  src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+  width={40} // Set to appropriate size
+  height={40}
+  className="w-auto h-8 m-2"
+/>
           FPV
         </a>
 
@@ -21,7 +25,7 @@ export default function Footer() {
           elements built for better web.
         </p>
 
-        <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900">
+        <ul className="flex flex-wrap items-center justify-center mb-6 text-gray-900">
           {[
             "About",
             "Premium",

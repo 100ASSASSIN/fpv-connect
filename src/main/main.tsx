@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image';
+
 
 
 const features = [
@@ -27,10 +29,10 @@ const features = [
 const MainPage: React.FC = () => {
   return (
     <>
-    <div className="min-h-screen bg-white text-white">
+    <div className="min-h-screen text-white bg-white">
       <div className="relative w-full h-[65vh] sm:h-[70vh] bg-white">
         <video
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
           src="https://videos.pexels.com/video-files/5803093/5803093-uhd_2560_1440_25fps.mp4"
           autoPlay
           loop
@@ -39,29 +41,29 @@ const MainPage: React.FC = () => {
 
         {/* Centered Text */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-3xl sm:text-5xl font-bold text-center px-4">
+          <h1 className="px-4 text-3xl font-bold text-center text-white sm:text-5xl">
             Empowering the Future of Drone Pilots
           </h1>
         </div>
       </div>
-      <div className="overflow-hidden bg-white py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      <div className="py-24 overflow-hidden bg-white sm:py-32">
+      <div className="px-6 mx-auto max-w-7xl lg:px-8">
+        <div className="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h2 className="text-base/7 font-semibold text-indigo-600">Deploy faster</h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+              <h2 className="font-semibold text-indigo-600 text-base/7">Deploy faster</h2>
+              <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 text-pretty sm:text-5xl">
                 A better workflow
               </p>
-              <p className="mt-6 text-lg/8 text-gray-600">
+              <p className="mt-6 text-gray-600 text-lg/8">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque,
                 iste dolor cupiditate blanditiis ratione.
               </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+              <dl className="max-w-xl mt-10 space-y-8 text-gray-600 text-base/7 lg:max-w-none">
                 {features.map((feature) => (
                   <div key={feature.name} className="relative pl-9">
                     <dt className="inline font-semibold text-gray-900">
-                      <feature.icon aria-hidden="true" className="absolute top-1 left-1 size-5 text-indigo-600" />
+                      <feature.icon aria-hidden="true" className="absolute text-indigo-600 top-1 left-1 size-5" />
                       {feature.name}
                     </dt>{' '}
                     <dd className="inline">{feature.description}</dd>
@@ -70,7 +72,7 @@ const MainPage: React.FC = () => {
               </dl>
             </div>
           </div>
-          <img
+          <Image
             alt="Product screenshot"
             src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
             width={2432}
@@ -82,7 +84,7 @@ const MainPage: React.FC = () => {
     </div>
       <div className="relative w-full h-[65vh] sm:h-[70vh] bg-white">
         <video
-          className="w-full h-full object-cover"
+          className="object-cover w-full h-full"
           src="https://videos.pexels.com/video-files/5803065/5803065-uhd_2560_1440_25fps.mp4"
           autoPlay
           loop
@@ -91,7 +93,7 @@ const MainPage: React.FC = () => {
 
         {/* Centered Text */}
         <div className="absolute inset-0 flex items-center justify-center">
-          <h1 className="text-white text-3xl sm:text-5xl font-bold text-center px-4">
+          <h1 className="px-4 text-3xl font-bold text-center text-white sm:text-5xl">
             Empowering the Future of Drone Pilots
           </h1>
         </div>
