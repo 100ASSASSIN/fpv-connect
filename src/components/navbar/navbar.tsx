@@ -53,7 +53,7 @@ export default function Navbar() {
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link href={"/pages/selection"} className="font-semibold text-gray-900 text-sm/6">
+            <Link href={"/pages/selection"} className="font-semibold text-white text-sm/6 bg-[var(--main-color)] p-3 rounded">
             Get stranded <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
@@ -68,7 +68,7 @@ export default function Navbar() {
                   alt=""
                   src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
                   className="w-auto h-8"
-                  width={40} // Set to appropriate size
+                  width={40} 
                   height={40}
                 />
               </a>
@@ -85,22 +85,22 @@ export default function Navbar() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="py-6 space-y-2">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
                       className="block px-3 py-2 -mx-3 font-semibold text-gray-900 rounded-lg text-base/7 hover:bg-gray-50"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                  <Link
+                    href={"/pages/selection"}
+                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50 "
                   >
-                    Log in
-                  </a>
+                    Get stranded
+                  </Link>
                 </div>
               </div>
             </div>
