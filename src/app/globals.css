@@ -8,8 +8,8 @@
 
 :root {
   /* Base colors */
-  --main-color: #6567f1;
-  --primary-color: #6567f1;
+  --main-color: #1B56FD;
+  --primary-color: #1B56FD;
 
   /* Theme colors */
   --color-bg-light: var(--color-white);
@@ -35,8 +35,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
+  --font-sans: 'Inter', 'Segoe UI', 'Helvetica Neue', 'Arial', sans-serif;
+  --font-mono: 'Fira Code', 'Menlo', 'Courier New', monospace;
 }
 
 @media (prefers-color-scheme: dark) {

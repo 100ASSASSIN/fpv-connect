@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import SkeletonForm from "@/components/Skeleton/SkeletonForm";
 import Spinner from "@/components/loader/loader";
+import { FcGoogle } from "react-icons/fc";
 
 const RegisterForm: React.FC = () => {
   const [loading, setLoading] = useState(true);
@@ -24,58 +25,93 @@ const RegisterForm: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative z-10 flex items-center justify-center min-h-screen px-4 mt-10">
+    <section className="relative z-10 flex items-center justify-center min-h-screen px-4 mt-10 ">
       {loading && <Spinner />}
 
-      <div className="w-full max-w-2xl bg-white rounded-md shadow-md dark:bg-gray-800 dark:border dark:border-gray-700 ">
+      <div className="w-full max-w-2xl bg-white shadow-xl rounded-xl dark:bg-gray-800 dark:border dark:border-gray-700">
         {loading ? (
           <SkeletonForm />
         ) : (
-          <div className="p-6 space-y-5 md:space-y-6 sm:p-8">
-            <h1 className="text-3xl font-bold text-[var(--main-color)] dark:text-white">
-              Create an account
-            </h1>
+          <div className="p-6 space-y-6 md:space-y-8 sm:p-8">
+            <div className="flex items-center justify-between">
+              <Link href={"/"} className="text-3xl font-bold text-gray-900 dark:text-white">
+                HMX<span className="text-[var(--main-color)]">HUB</span>
+              </Link>
+            </div>
+
+            {/* Welcome Heading */}
+            <div className="space-y-1 text-center">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Create your FPV Pilot account</h2>
+              <p className="m-2 text-sm text-gray-600 dark:text-gray-300">
+                Join the HMXHUB community and explore next-gen features. It’s quick and easy.
+              </p>
+            </div>
+
+            {/* OAuth Login Buttons */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              <button
+                type="button"
+                className="flex items-center justify-center gap-3 px-5 py-3 text-sm font-medium transition-all duration-300 bg-white border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600 hover:shadow-md"
+              >
+                <FcGoogle size={20} />
+                Continue with Google
+              </button>
+
+              <button
+                type="button"
+                className="flex items-center justify-center gap-3 px-5 py-3 text-sm font-medium text-white transition-all duration-300 bg-black border rounded-lg hover:bg-gray-900"
+              >
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M12 .296c-6.63 0-12 5.373-12 12 0 5.302 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.724-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.086 1.84 1.237 1.84 1.237 1.07 1.834 2.809 1.304 3.495.997.108-.775.419-1.304.762-1.604-2.665-.305-5.466-1.334-5.466-5.933 0-1.312.469-2.384 1.236-3.222-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.655 1.653.243 2.873.12 3.176.77.838 1.235 1.91 1.235 3.222 0 4.61-2.804 5.624-5.476 5.922.43.372.823 1.102.823 2.222v3.293c0 .321.218.694.825.576C20.565 22.092 24 17.592 24 12.296c0-6.627-5.373-12-12-12" />
+                </svg>
+                Continue with GitHub
+              </button>
+            </div>
+
+            {/* Divider */}
+            <div className="flex items-center justify-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+              <span className="w-full border-t border-gray-300 dark:border-gray-600"></span>
+              Signup
+              <span className="w-full border-t border-gray-300 dark:border-gray-600"></span>
+            </div>
+
+            {/* Registration Form */}
             <form className="space-y-4" method="POST">
-              {/* First Name */}
-              <div>
-                <label
-                  htmlFor="first_name"
-                  className="block text-sm font-medium text-gray-700 dark:text-white"
-                >
-                  First Name
-                </label>
-                <input
-                  id="first_name"
-                  type="text"
-                  required
-                  placeholder="John"
-                  className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                />
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="first_name" className="block text-sm font-medium text-gray-700 dark:text-white">
+                    First Name
+                  </label>
+                  <input
+                    id="first_name"
+                    type="text"
+                    required
+                    placeholder="John"
+                    className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-[var(--main-color)]"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="last_name" className="block text-sm font-medium text-gray-700 dark:text-white">
+                    Last Name
+                  </label>
+                  <input
+                    id="last_name"
+                    type="text"
+                    required
+                    placeholder="Doe"
+                    className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-[var(--main-color)]"
+                  />
+                </div>
               </div>
 
-              {/* Last Name */}
               <div>
-                <label
-                  htmlFor="last_name"
-                  className="block text-sm font-medium text-gray-700 dark:text-white"
-                >
-                  Last Name
-                </label>
-                <input
-                  id="last_name"
-                  type="text"
-                  required
-                  placeholder="Doe"
-                  className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                />
-              </div>
-
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-white"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-white">
                   Email Address
                 </label>
                 <input
@@ -83,79 +119,62 @@ const RegisterForm: React.FC = () => {
                   type="email"
                   required
                   placeholder="john@example.com"
-                  className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-[var(--main-color)]"
                 />
               </div>
 
-              {/* Date of Birth */}
-              <div>
-                <label
-                  htmlFor="dob"
-                  className="block text-sm font-medium text-gray-700 dark:text-white"
-                >
-                  Date of Birth
-                </label>
-                <input
-                  id="dob"
-                  type="date"
-                  required
-                  className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                />
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="dob" className="block text-sm font-medium text-gray-700 dark:text-white">
+                    Date of Birth
+                  </label>
+                  <input
+                    id="dob"
+                    type="date"
+                    required
+                    className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-[var(--main-color)]"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="location" className="block text-sm font-medium text-gray-700 dark:text-white">
+                    Location
+                  </label>
+                  <input
+                    id="location"
+                    type="text"
+                    required
+                    placeholder="Chennai, India"
+                    className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-[var(--main-color)]"
+                  />
+                </div>
               </div>
 
-              {/* Location */}
-              <div>
-                <label
-                  htmlFor="location"
-                  className="block text-sm font-medium text-gray-700 dark:text-white"
-                >
-                  Location
-                </label>
-                <input
-                  id="location"
-                  type="text"
-                  required
-                  placeholder="Chennai, India"
-                  className="w-full p-3 mt-1 border border-gray-300 rounded-lg dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500"
-                />
-              </div>
-
-              {/* Terms & Conditions */}
-              <div className="flex items-start">
+              <div className="flex items-start pt-2">
                 <input
                   id="terms"
                   type="checkbox"
                   required
-                  className="w-4 h-4 mt-1 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:border-gray-600"
+                  className="w-4 h-4 mt-1 border-gray-300 rounded text-[var(--main-color)] dark:bg-gray-700 dark:border-gray-600 focus:ring-[var(--main-color)]"
                 />
-                <label
-                  htmlFor="terms"
-                  className="ml-2 text-sm text-gray-600 dark:text-gray-300"
-                >
+                <label htmlFor="terms" className="ml-2 text-sm text-gray-600 dark:text-gray-300">
                   I accept the{" "}
-                  <Link
-                    href="#"
-                    className="text-primary-600 hover:underline dark:text-primary-400"
-                  >
+                  <Link href="#" className="text-[var(--main-color)] hover:underline">
                     Terms and Conditions
                   </Link>
                 </label>
               </div>
 
-              {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full px-4 py-3 text-sm font-medium text-white rounded-lg bg-[var(--main-color)] hover:bg-primary-700 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800"
+                className="w-full px-4 py-3 text-sm font-medium text-white rounded-xs bg-[var(--main-color)] hover:bg-opacity-90 focus:ring-4 focus:ring-[var(--main-color)]/50"
               >
                 Create Account
               </button>
 
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-center text-gray-600 dark:text-gray-400">
                 Already have an account?{" "}
-                <Link
-                  href="#"
-                  className="text-primary-600 hover:underline dark:text-primary-400"
-                >
+                <Link href="#" className="text-[var(--main-color)] hover:underline">
                   Login here
                 </Link>
               </p>
