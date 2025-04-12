@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import HealthIndicator from "@/components/servercheck/ServerCheck";
+import { Toaster } from "react-hot-toast";
 
 const navigation = [
   { name: "Home", href: "/" },
@@ -17,6 +19,8 @@ export default function Navbar() {
 
   return (
     <>
+       <HealthIndicator />
+       <Toaster position="top-right" />
       <div className="bg-white mb-15">
         <header className="absolute inset-x-0 top-0 z-50">
           <nav

@@ -11,21 +11,21 @@ import Spinner from "@/components/loader/loader";
 
 const features = [
   {
-    name: "Push to deploy.",
+    name: "Instant FPV Flight Deployment",
     description:
-      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.",
+      "Launch your FPV drone configurations with one click. Deploy custom PID profiles and firmware updates seamlessly.",
     icon: CloudArrowUpIcon,
   },
   {
-    name: "SSL certificates.",
+    name: "Secure Flight Channels",
     description:
-      "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.",
+      "All communication between controller and drone is encrypted, ensuring a safe and interference-free flight experience.",
     icon: LockClosedIcon,
   },
   {
-    name: "Database backups.",
+    name: "Flight Log Backups",
     description:
-      "Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.",
+      "Automatically backup flight telemetry and blackbox data to the cloud. Never lose your critical performance logs.",
     icon: ServerIcon,
   },
 ];
@@ -70,16 +70,16 @@ const MainPage: React.FC = () => {
             <div className="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
               <div className="lg:pt-4 lg:pr-8">
                 <div className="lg:max-w-lg">
-                  <h2 className="font-semibold text-indigo-600 text-base/7">
+                  <h2 className="font-semibold text-[var(--main-color)] text-base/7">
                     Deploy faster
                   </h2>
                   <p className="mt-2 text-4xl font-semibold tracking-tight text-gray-900 text-pretty sm:text-5xl">
                     A better workflow
                   </p>
                   <p className="mt-6 text-gray-600 text-lg/8">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                    Maiores impedit perferendis suscipit eaque, iste dolor
-                    cupiditate blanditiis ratione.
+                    Streamline your FPV drone operations with smarter configuration, real-time telemetry,
+                    and instant deployment. From tuning flight parameters to syncing logs in the cloud
+                    everything is faster, safer, and more reliable.
                   </p>
                   <dl className="max-w-xl mt-10 space-y-8 text-gray-600 text-base/7 lg:max-w-none">
                     {features.map((feature) => (
@@ -87,7 +87,7 @@ const MainPage: React.FC = () => {
                         <dt className="inline font-semibold text-gray-900">
                           <feature.icon
                             aria-hidden="true"
-                            className="absolute text-indigo-600 top-1 left-1 size-5"
+                            className="absolute text-[var(--main-color)] top-1 left-1 size-5"
                           />
                           {feature.name}
                         </dt>{" "}
@@ -99,7 +99,7 @@ const MainPage: React.FC = () => {
               </div>
               <Image
                 alt="Product screenshot"
-                src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png"
+                src="https://images.unsplash.com/photo-1657806899611-f46fb6822f88?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 width={2432}
                 height={1442}
                 className="w-[48rem] max-w-none rounded-xl ring-1 shadow-xl ring-gray-400/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
@@ -119,11 +119,10 @@ const MainPage: React.FC = () => {
           {/* Centered Text */}
           <div className="absolute inset-0 flex items-center justify-center">
             <h1 className="px-4 text-3xl font-bold text-center text-white sm:text-5xl">
-              Empowering the Future of Drone Pilots
+            Instant FPV Flight Deployment
             </h1>
           </div>
         </div>
-
         {/* Related FPV Content Cards */}
       </div>
     </>

@@ -1,4 +1,3 @@
-// app/pages/selection/page.tsx
 import React, { Suspense } from 'react'
 import SelectionClient from '@/components/selectionclient/SelectionClient'
 
