@@ -21,7 +21,7 @@ export default function Navbar() {
         <header className="absolute inset-x-0 top-0 z-50">
           <nav
             aria-label="Global"
-            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-white shadow lg:px-8 rounded-b-xs"
+            className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-2 bg-white shadow lg:px-8 rounded-b-xs"
           >
             <div className="flex lg:flex-1">
               <Link href={"/"} className="-m-1.5 p-1.5">
@@ -46,7 +46,7 @@ export default function Navbar() {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="font-semibold text-gray-900 text-sm/6"
+                  className="font-semibold text-gray-900 text-sm/6 hover:text-blue-600"
                 >
                   {item.name}
                 </a>
@@ -56,7 +56,7 @@ export default function Navbar() {
               {/* Sign In Button */}
               <a
                 href="/pages/selection?mode=signin"
-                className="px-5 py-3 text-sm font-semibold text-gray-900 transition rounded-xs hover:text-blue-600"
+                className="px-5 py-3 text-sm font-semibold text-gray-900 transition rounded-sm hover:text-blue-600"
               >
                 Sign In
               </a>
