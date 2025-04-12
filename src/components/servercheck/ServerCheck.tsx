@@ -9,7 +9,10 @@ const HealthIndicator = () => {
   useEffect(() => {
     const checkHealth = async () => {
       try {
-        const res = await fetch("http://127.0.0.1:8000", { cache: "no-store" });
+        if (!process.env.NEXT_PUBLIC_SERVER_URL) {
+          throw new Error("Server URL is not defined");
+        }
+        const res = await fetch(process.env.NEXT_PUBLIC_SERVER_URL, { cache: "no-store" });
         const data = await res.json();
         if (res.ok && data?.message) {
           setIsHealthy(true);
