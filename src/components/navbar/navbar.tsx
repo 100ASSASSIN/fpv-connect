@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { name: "Service", href: "/pages/service" },
+  { name: "Service", href: "#" },
   { name: "Contact", href: "#" },
   { name: "About", href: "/pages/about" },
 ];
