@@ -110,7 +110,7 @@ const MainPage: React.FC = () => {
         <div className="relative w-full h-[65vh] sm:h-[70vh] bg-white">
           <video
             className="object-cover w-full h-full"
-            src="https://videos.pexels.com/video-files/5803065/5803065-uhd_2560_1440_25fps.mp4"
+            src="https://videos.pexels.com/video-files/14004543/14004543-uhd_2560_1440_60fps.mp4"
             autoPlay
             loop
             muted
