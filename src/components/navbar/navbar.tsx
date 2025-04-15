@@ -30,7 +30,7 @@ export default function Navbar() {
             <div className="flex lg:flex-1">
               <Link href={"/"} className="-m-1.5 p-1.5">
                 <span className="sr-only">Your Company</span>
-                <div className="w-auto h-8 font-semibold text-gray-900 text-2xl/6">
+                <div className="w-auto h-8 font-bold text-gray-900 text-2xl/6">
                   HMX<span className="text-[var(--main-color)]">HUB</span>
                 </div>
               </Link>

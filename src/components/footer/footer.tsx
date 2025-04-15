@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="max-w-screen-xl px-4 py-10 mx-auto sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
           <div className="text-center md:text-left">
-            <a href="#" className="text-3xl font-extrabold text-gray-900 dark:text-white">
+            <a href="#" className="text-2xl/6 font-bold text-gray-900 dark:text-white">
               HMX<span className="text-[var(--main-color)]">HUB</span>
             </a>
             <p className="max-w-md mt-4 text-gray-500 dark:text-gray-400">
